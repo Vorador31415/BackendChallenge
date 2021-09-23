@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvolutionizerPlanerWeb", "EvolutionizerPlanerWeb.csproj", "{79E1FB39-33EF-483F-B4A7-112962331621}"
+	ProjectSection(ProjectDependencies) = postProject
+		{69EE8217-EDFE-4379-89BD-0EFB237AE99A} = {69EE8217-EDFE-4379-89BD-0EFB237AE99A}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramDataAccess", "..\ProgramDataAccess\ProgramDataAccess.csproj", "{69EE8217-EDFE-4379-89BD-0EFB237AE99A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79E1FB39-33EF-483F-B4A7-112962331621}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79E1FB39-33EF-483F-B4A7-112962331621}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79E1FB39-33EF-483F-B4A7-112962331621}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79E1FB39-33EF-483F-B4A7-112962331621}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69EE8217-EDFE-4379-89BD-0EFB237AE99A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69EE8217-EDFE-4379-89BD-0EFB237AE99A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69EE8217-EDFE-4379-89BD-0EFB237AE99A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69EE8217-EDFE-4379-89BD-0EFB237AE99A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09A6EF30-27F7-4FFF-A2E4-EDBD65653CFE}
+	EndGlobalSection
+EndGlobal

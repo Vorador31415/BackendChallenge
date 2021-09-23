@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ac762ea829cf41429fc1ddb85ff42563" Name="Diagram1">
+        <EntityTypeShape EntityType="Database1Model.Program" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="Database1Model.Projects" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="Database1Model.Tasks" Width="1.5" PointX="5.25" PointY="1" />
+        <AssociationConnector Association="Database1Model.FK_ProgramProjects" />
+        <AssociationConnector Association="Database1Model.FK_ProjectsTasks" />
+        <AssociationConnector Association="Database1Model.FK_Dependency" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

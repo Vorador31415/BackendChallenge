@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AllProgramModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="AllProgramEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Program" EntityType="AllProgramModel.Program" />
+    <EntitySet Name="Projects" EntityType="AllProgramModel.Projects" />
+    <EntitySet Name="Tasks" EntityType="AllProgramModel.Tasks" />
+    <AssociationSet Name="FK_ProgramProjects" Association="AllProgramModel.FK_ProgramProjects">
+      <End Role="Program" EntitySet="Program" />
+      <End Role="Projects" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProjectsTasks" Association="AllProgramModel.FK_ProjectsTasks">
+      <End Role="Projects" EntitySet="Projects" />
+      <End Role="Tasks" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dependency" Association="AllProgramModel.FK_Dependency">
+      <End Role="Tasks" EntitySet="Tasks" />
+      <End Role="Tasks1" EntitySet="Tasks" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Program">
+    <Key>
+      <PropertyRef Name="ProgramID" />
+    </Key>
+    <Property Name="ProgramID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Timestamp" Type="Int32" />
+    <Property Name="Duration" Type="Int32" />
+    <Property Name="status" Type="Byte" />
+    <NavigationProperty Name="Projects" Relationship="AllProgramModel.FK_ProgramProjects" FromRole="Program" ToRole="Projects" />
+  </EntityType>
+  <EntityType Name="Projects">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Timestamp" Type="Int32" />
+    <Property Name="Duration" Type="Int32" />
+    <Property Name="status" Type="Byte" />
+    <Property Name="ProgramId" Type="Int32" />
+    <NavigationProperty Name="Program" Relationship="AllProgramModel.FK_ProgramProjects" FromRole="Projects" ToRole="Program" />
+    <NavigationProperty Name="Tasks" Relationship="AllProgramModel.FK_ProjectsTasks" FromRole="Projects" ToRole="Tasks" />
+  </EntityType>
+  <EntityType Name="Tasks">
+    <Key>
+      <PropertyRef Name="TaskID" />
+    </Key>
+    <Property Name="TaskID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="DepentsOn" Type="Int32" />
+    <Property Name="Timestamp" Type="Int32" />
+    <Property Name="Duration" Type="Int32" />
+    <Property Name="status" Type="Byte" />
+    <Property Name="ProjectsId" Type="Int32" />
+    <Property Name="AfterMe_TaskID" Type="Int32" />
+    <NavigationProperty Name="Projects" Relationship="AllProgramModel.FK_ProjectsTasks" FromRole="Tasks" ToRole="Projects" />
+    <NavigationProperty Name="Tasks1" Relationship="AllProgramModel.FK_Dependency" FromRole="Tasks" ToRole="Tasks1" />
+    <NavigationProperty Name="Tasks2" Relationship="AllProgramModel.FK_Dependency" FromRole="Tasks1" ToRole="Tasks" />
+  </EntityType>
+  <Association Name="FK_ProgramProjects">
+    <End Type="AllProgramModel.Program" Role="Program" Multiplicity="0..1" />
+    <End Type="AllProgramModel.Projects" Role="Projects" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Program">
+        <PropertyRef Name="ProgramID" />
+      </Principal>
+      <Dependent Role="Projects">
+        <PropertyRef Name="ProgramId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProjectsTasks">
+    <End Type="AllProgramModel.Projects" Role="Projects" Multiplicity="0..1" />
+    <End Type="AllProgramModel.Tasks" Role="Tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Projects">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="Tasks">
+        <PropertyRef Name="ProjectsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dependency">
+    <End Type="AllProgramModel.Tasks" Role="Tasks" Multiplicity="0..1" />
+    <End Type="AllProgramModel.Tasks" Role="Tasks1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tasks">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="Tasks1">
+        <PropertyRef Name="AfterMe_TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
